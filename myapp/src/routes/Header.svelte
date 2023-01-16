@@ -49,7 +49,7 @@
       localStorage.setItem("_data", JSON.stringify(_data));
       return currentPolls;
     });
-    navigate(mylinkurl + "/login");
+    navigate(mylinkurl + "/mylogin");
     location.reload();
   };
 </script>

@@ -204,10 +204,16 @@ class Mypluginwp_Public {
 
 	public function mypwp_template_redirect(){
 			global $wp;
+			// deb($wp);exit();
 			if(is_front_page()){
 				include_once dirname( __FILE__ ) . '/partials/index.php';
 				exit();
+			}else if($wp->query_vars['name'] && $wp->query_vars['name'] === "mylogin"){
+				include_once dirname( __FILE__ ) . '/partials/index.php';
+				exit();
 			}
+
+			// mylogin
 			
 			
 			

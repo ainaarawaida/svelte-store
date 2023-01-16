@@ -28,7 +28,7 @@
       pathname = location.pathname;
     });
 
-    if (Object.keys(_data.user).length != 0) {
+    if (_data.user && Object.keys(_data.user).length != 0) {
       navigate(mylinkurl + "/");
       location.reload();
     }

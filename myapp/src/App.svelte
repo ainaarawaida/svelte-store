@@ -16,6 +16,7 @@
   import Login from "./routes/Login.svelte";
   import About from "./routes/About.svelte";
   import Blog from "./routes/Blog.svelte";
+  import Default from "./routes/Default.svelte";
   import Dashboard from "./routes/Dashboard.svelte";
   import MaklumatKariah from "./routes/MaklumatKariah.svelte";
   import MaklumatProfil from "./routes/MaklumatProfil.svelte";
@@ -118,6 +119,8 @@
   });
 
   $: console.log("_data", _data);
+  $: console.log("_data2", _data.user);
+  $: console.log("_data2", _data.user ? Object.keys(_data.user).length : "");
 
   // console.log("pathname", pathname);
   // setTimeout(async () => {
@@ -141,10 +144,18 @@
       <img class="" src="{mypluginurl}/assets/img/loading.gif" alt="" />
     </div>
   {:else if _data.loading === false}
-    {#if Object.keys(_data.user).length == 0}
-      <Route path={mylinkurl + "/login"}>
+    {#if !_data.user || (_data.user && Object.keys(_data.user).length == 0)}
+      <!-- <Route path={mylinkurl + "/*"}> -->
+      <Route path={mylinkurl + "/mylogin"}>
         <Login />
       </Route>
+      <Route path={mylinkurl + "/"}>
+        <Home />
+      </Route>
+      <Route>
+        <Home />
+      </Route>
+      <!-- </Route> -->
     {:else}
       <div
         id="page-container"
