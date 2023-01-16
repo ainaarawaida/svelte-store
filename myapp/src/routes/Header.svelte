@@ -4,6 +4,8 @@
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
   import { data } from "./../store.js";
+  import { loadScript } from "./../document.js";
+  import { beforeUpdate, afterUpdate } from "svelte";
   let mypluginurl = getContext("mypluginurl");
   let mybaseurl = getContext("mybaseurl");
   let mylinkurl = getContext("mylinkurl");
@@ -13,15 +15,43 @@
       display_name: "",
     },
   };
+  let _data;
+
+  data.update((currentPolls) => {
+    _data = currentPolls;
+    return currentPolls;
+  });
 
   onMount(async () => {
-    unsubscribe = data.subscribe((value) => {
-      khai_user.data.display_name = value.khai_user.data.display_name;
-    });
+    unsubscribe = data.subscribe((value) => {});
+    // setTimeout(async () => {
+    await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
+    console.log("oneui.app.min.js");
+    // }, 1000);
   });
   onDestroy(() => {
     unsubscribe;
   });
+
+  afterUpdate(async () => {
+    // ...the DOM is now in sync with the data
+    // if (_data.loading == false) {
+    //   // setTimeout(async () => {
+    //   console.log("load oneui.app.min.js");
+    //   await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
+    //   // }, 2000);
+    // }
+  });
+
+  const logout = async (ele) => {
+    data.update((currentPolls) => {
+      _data.user = {};
+      localStorage.setItem("_data", JSON.stringify(_data));
+      return currentPolls;
+    });
+    navigate(mylinkurl + "/login");
+    location.reload();
+  };
 </script>
 
 <!-- Header -->
@@ -103,7 +133,7 @@
         >
           <img
             class="rounded-circle"
-            src={mypluginurl + "assets/media/avatars/avatar10.jpg"}
+            src={mypluginurl + "/assets/media/avatars/avatar10.jpg"}
             alt="Header Avatar"
             style="width: 21px;"
           />
@@ -121,7 +151,7 @@
           <div class="p-3 text-center bg-body-light border-bottom rounded-top">
             <img
               class="img-avatar img-avatar48 img-avatar-thumb"
-              src="{mypluginurl}assets/media/avatars/avatar10.jpg"
+              src="{mypluginurl}/assets/media/avatars/avatar10.jpg"
               alt=""
             />
             <p class="mt-2 mb-0 fw-medium">{khai_user.data.display_name}</p>
@@ -165,8 +195,9 @@
               <span class="fs-sm fw-medium">Profil</span>
             </Link>
             <a
+              href="/"
               class="dropdown-item d-flex align-items-center justify-content-between"
-              href="{mybaseurl}/wp-login.php?action=logout"
+              on:click|preventDefault={(e) => logout(e)}
             >
               <span class="fs-sm fw-medium">Log Out</span>
             </a>

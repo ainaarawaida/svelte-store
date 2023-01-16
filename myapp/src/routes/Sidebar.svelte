@@ -29,9 +29,7 @@
       pathname = location.pathname;
     });
 
-    unsubscribe = data.subscribe((value) => {
-      khai_user = value.khai_user;
-    });
+    unsubscribe = data.subscribe((value) => {});
 
     menuclick = (e) => {
       // setTimeout(function () {
@@ -109,7 +107,7 @@
           <a
             class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
             data-toggle="theme"
-            data-theme="{mypluginurl}assets/css/themes/amethyst.min.css"
+            data-theme="{mypluginurl}/assets/css/themes/amethyst.min.css"
             href="#"
           >
             <span>Amethyst</span>
@@ -118,7 +116,7 @@
           <a
             class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
             data-toggle="theme"
-            data-theme="{mypluginurl}assets/css/themes/city.min.css"
+            data-theme="{mypluginurl}/assets/css/themes/city.min.css"
             href="#"
           >
             <span>City</span>
@@ -127,7 +125,7 @@
           <a
             class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
             data-toggle="theme"
-            data-theme="{mypluginurl}assets/css/themes/flat.min.css"
+            data-theme="{mypluginurl}/assets/css/themes/flat.min.css"
             href="#"
           >
             <span>Flat</span>
@@ -136,7 +134,7 @@
           <a
             class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
             data-toggle="theme"
-            data-theme="{mypluginurl}assets/css/themes/modern.min.css"
+            data-theme="{mypluginurl}/assets/css/themes/modern.min.css"
             href="#"
           >
             <span>Modern</span>
@@ -145,7 +143,7 @@
           <a
             class="dropdown-item d-flex align-items-center justify-content-between fw-medium"
             data-toggle="theme"
-            data-theme="{mypluginurl}assets/css/themes/smooth.min.css"
+            data-theme="{mypluginurl}/assets/css/themes/smooth.min.css"
             href="#"
           >
             <span>Smooth</span>

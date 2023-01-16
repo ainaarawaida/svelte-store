@@ -12,7 +12,7 @@
     <a class="img-link me-1" href="javascript:void(0)">
       <img
         class="img-avatar img-avatar32"
-        src="{mypluginurl}assets/media/avatars/avatar10.jpg"
+        src="{mypluginurl}/assets/media/avatars/avatar10.jpg"
         alt=""
       />
     </a>
@@ -180,7 +180,7 @@
                     <div class="me-3 ms-2 overlay-container overlay-bottom">
                       <img
                         class="img-avatar img-avatar48"
-                        src="{mypluginurl}assets/media/avatars/avatar6.jpg"
+                        src="{mypluginurl}/assets/media/avatars/avatar6.jpg"
                         alt=""
                       />
                       <span
@@ -198,7 +198,7 @@
                     <div class="me-3 ms-2 overlay-container overlay-bottom">
                       <img
                         class="img-avatar img-avatar48"
-                        src="{mypluginurl}assets/media/avatars/avatar9.jpg"
+                        src="{mypluginurl}/assets/media/avatars/avatar9.jpg"
                         alt=""
                       />
                       <span
@@ -216,7 +216,7 @@
                     <div class="me-3 ms-2 overlay-container overlay-bottom">
                       <img
                         class="img-avatar img-avatar48"
-                        src="{mypluginurl}assets/media/avatars/avatar8.jpg"
+                        src="{mypluginurl}/assets/media/avatars/avatar8.jpg"
                         alt=""
                       />
                       <span
@@ -234,7 +234,7 @@
                     <div class="me-3 ms-2 overlay-container overlay-bottom">
                       <img
                         class="img-avatar img-avatar48"
-                        src="{mypluginurl}assets/media/avatars/avatar3.jpg"
+                        src="{mypluginurl}/assets/media/avatars/avatar3.jpg"
                         alt=""
                       />
                       <span
@@ -252,7 +252,7 @@
                     <div class="me-3 ms-2 overlay-container overlay-bottom">
                       <img
                         class="img-avatar img-avatar48"
-                        src="{mypluginurl}assets/media/avatars/avatar11.jpg"
+                        src="{mypluginurl}/assets/media/avatars/avatar11.jpg"
                         alt=""
                       />
                       <span
