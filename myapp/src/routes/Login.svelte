@@ -12,6 +12,7 @@
   let unsub;
   let mypluginurl = getContext("mypluginurl");
   let myapiurl = getContext("myapiurl");
+  let mybaseurl = getContext("mybaseurl");
 
   let _data;
   let fields = {
@@ -28,6 +29,19 @@
       pathname = location.pathname;
     });
 
+    await loadScript(`${mypluginurl}/assets/js/jquery-3.5.1.min.js`);
+    await loadScript(
+      `${mypluginurl}/assets/js/icons/feather-icon/feather.min.js`
+    );
+    await loadScript(
+      `${mypluginurl}/assets/js/icons/feather-icon/feather-icon.js`
+    );
+
+    await loadScript(`${mypluginurl}/assets/js/config.js`);
+    await loadScript(`${mypluginurl}/assets/js/bootstrap/popper.min.js`);
+    await loadScript(`${mypluginurl}/assets/js/bootstrap/bootstrap.min.js`);
+    await loadScript(`${mypluginurl}/assets/js/script.js`);
+
     if (_data.user && Object.keys(_data.user).length != 0) {
       navigate(mylinkurl + "/");
       location.reload();
@@ -43,7 +57,7 @@
       localStorage.setItem("_data", JSON.stringify(_data));
       return currentPolls;
     });
-    // console.log("myapiurl", myapiurl);
+
     let apidata = new Promise(function (myResolve, myReject) {
       let dataArray = new FormData();
       dataArray.append("action", "Login");
@@ -84,106 +98,99 @@
       alert("salah credential");
     }
   };
+
+  // $: console.log("myapiurl", myapiurl);
 </script>
 
-<div id="page-container">
-  <!-- Main Container -->
-  <main id="main-container">
-    <!-- Page Content -->
-    <div class="hero-static d-flex align-items-center">
-      <div class="content">
-        <div class="row justify-content-center push">
-          <div class="col-md-8 col-lg-6 col-xl-4">
-            <!-- Sign In Block -->
-            <div class="block block-rounded mb-0">
-              <div class="block-header block-header-default">
-                <h3 class="block-title">Sign In</h3>
-                <div class="block-options">
-                  <a class="btn-block-option fs-sm" href="op_auth_reminder.html"
-                    >Forgot Password?</a
-                  >
-                  <a
-                    class="btn-block-option"
-                    href="op_auth_signup.html"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="left"
-                    title="New Account"
-                  >
-                    <i class="fa fa-user-plus" />
-                  </a>
-                </div>
-              </div>
-              <div class="block-content">
-                <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-                  <h1 class="h2 mb-1">Svelte</h1>
-                  <p class="fw-medium text-muted">Welcome, please login.</p>
-
-                  <!-- Sign In Form -->
-                  <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.min.js which was auto compiled from _js/pages/op_auth_signin.js) -->
-                  <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                  <form
-                    on:submit|preventDefault={submitHandler}
-                    class="js-validation-signin"
-                  >
-                    <div class="py-3">
-                      <div class="mb-4">
-                        <input
-                          type="text"
-                          class="form-control form-control-alt form-control-lg"
-                          id="login-username"
-                          name="username"
-                          placeholder="Username"
-                          bind:value={fields.username}
-                        />
-                      </div>
-                      <div class="mb-4">
-                        <input
-                          type="password"
-                          class="form-control form-control-alt form-control-lg"
-                          id="login-password"
-                          name="password"
-                          placeholder="Password"
-                          bind:value={fields.password}
-                        />
-                      </div>
-                      <div class="mb-4">
-                        <div class="form-check">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            value=""
-                            id="login-remember"
-                            name="login-remember"
-                          />
-                          <label class="form-check-label" for="login-remember"
-                            >Remember Me</label
-                          >
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row mb-4">
-                      <div class="col-md-6 col-xl-5">
-                        <button type="submit" class="btn w-100 btn-alt-primary">
-                          <i class="fa fa-fw fa-sign-in-alt me-1 opacity-50" /> Sign
-                          In
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                  <!-- END Sign In Form -->
-                </div>
+<section>
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-12">
+        <div class="login-card">
+          <form
+            class="theme-form login-form"
+            on:submit|preventDefault={submitHandler}
+          >
+            <h4>Login</h4>
+            <h6>Welcome back! Log in to your account.</h6>
+            <div class="form-group">
+              <label for="username">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="icon-email" /></span>
+                <input
+                  id="username"
+                  name="username"
+                  class="form-control"
+                  type="email"
+                  required
+                  placeholder=""
+                  bind:value={fields.username}
+                />
               </div>
             </div>
-            <!-- END Sign In Block -->
-          </div>
-        </div>
-        <div class="fs-sm text-muted text-center">
-          <strong>Svelte</strong> &copy; <span data-toggle="year-copy" />
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="icon-lock" /></span>
+                <input
+                  id="password"
+                  class="form-control"
+                  type="password"
+                  name="password"
+                  required
+                  placeholder=""
+                  bind:value={fields.password}
+                />
+                <div class="show-hide"><span class="show" /></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="checkbox">
+                <input id="checkbox1" type="checkbox" />
+                <label for="checkbox1">Remember password</label>
+              </div>
+              <a class="link" href="forget-password.html">Forgot password?</a>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit"
+                >Sign in</button
+              >
+            </div>
+            <div class="login-social-title">
+              <h5>Sign in with</h5>
+            </div>
+            <div class="form-group">
+              <ul class="login-social">
+                <li>
+                  <a href="https://www.linkedin.com/login" target="_blank"
+                    ><i data-feather="linkedin" /></a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/login" target="_blank"
+                    ><i data-feather="twitter" /></a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/login" target="_blank"
+                    ><i data-feather="facebook" /></a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/login" target="_blank"
+                    ><i data-feather="instagram" /></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <p>
+              Don't have account?<a class="ms-2" href="log-in.html"
+                >Create Account</a
+              >
+            </p>
+          </form>
         </div>
       </div>
     </div>
-    <!-- END Page Content -->
-  </main>
-  <!-- END Main Container -->
-</div>
-<!-- END Page Container -->
+  </div>
+</section>

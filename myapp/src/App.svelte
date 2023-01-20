@@ -57,60 +57,8 @@
     });
 
     _data.loading = false;
-
-    // if (!_data.user || Object.keys(_data.user).length == 0) {
-    //   navigate(mylinkurl + "/login");
-    //   // location.reload();
-    // } else {
-    //   navigate(mylinkurl + "/");
-    // }
-
-    // setTimeout(async () => {
-    //   await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
-    //   console.log("oneui.app.min.js");
-    // }, 5100);
-
-    // setTimeout(async () => {
-    //   await loadScript(
-    //     `${mypluginurl}/assets/js/plugins/chart.js/chart.min.js`
-    //   );
-    //   console.log("chart.min.js");
-    // }, 10300);
-
-    // setTimeout(async () => {
-    //   await loadScript(
-    //     `${mypluginurl}/assets/js/pages/be_pages_dashboard.min.js`
-    //   );
-    //   console.log("be_pages_dashboard");
-    // }, 15500);
-
-    // await loadScript(`${mypluginurl}/assets/js/lib/jquery.min.js`);
-    // await loadScript(
-    //   `${mypluginurl}/assets/js/plugins/jquery-validation/jquery.validate.min.js`
-    // );
-    // setTimeout(async () => {
-    //   await loadScript(`${mypluginurl}/assets/js/pages/op_auth_signin.min.js`);
-    // }, 500);
   });
-  afterUpdate(() => {
-    // // ...the DOM is now in sync with the data
-    // setTimeout(async () => {
-    //   await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
-    //   console.log("oneui.app.min.js");
-    // }, 5100);
-    // setTimeout(async () => {
-    //   await loadScript(
-    //     `${mypluginurl}/assets/js/plugins/chart.js/chart.min.js`
-    //   );
-    //   console.log("chart.min.js");
-    // }, 10300);
-    // setTimeout(async () => {
-    //   await loadScript(
-    //     `${mypluginurl}/assets/js/pages/be_pages_dashboard.min.js`
-    //   );
-    //   console.log("be_pages_dashboard");
-    // }, 15500);
-  });
+  afterUpdate(() => {});
 
   onDestroy(() => {
     console.log("bye");
@@ -119,30 +67,36 @@
   });
 
   $: console.log("_data", _data);
-  $: console.log("_data2", _data.user);
-  $: console.log("_data2", _data.user ? Object.keys(_data.user).length : "");
-
-  // console.log("pathname", pathname);
-  // setTimeout(async () => {
-  //   data.update((currentPolls) => {
-  //     _data.user = "ahamd3";
-  //     return {};
-  //   });
-  // }, 5000);
+  // $: console.log("_data2", _data.user);
+  // $: console.log("_data2", _data.user ? Object.keys(_data.user).length : "");
 </script>
 
 <svelte:head>
-  <link
-    rel="stylesheet"
-    href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css"
-  />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/icofont.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/themify.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/flag-icon.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/feather-icon.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/animate.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/chartist.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/chartist.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/owlcarousel.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/prism.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/bootstrap.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/style.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/color-1.css" />
+  <link rel="stylesheet" href="{mypluginurl}/assets/css/responsive.css" />
 </svelte:head>
 
 <Router primary={false}>
   {#if _data.loading === true}
-    <div class="d-flex justify-content-center">
-      <img class="" src="{mypluginurl}/assets/img/loading.gif" alt="" />
+    <!-- Loader starts-->
+    <div class="loader-wrapper">
+      <div class="theme-loader">
+        <div class="loader-p" />
+      </div>
     </div>
+    <!-- Loader ends-->
   {:else if _data.loading === false}
     {#if !_data.user || (_data.user && Object.keys(_data.user).length == 0)}
       <!-- <Route path={mylinkurl + "/*"}> -->
@@ -157,63 +111,18 @@
       </Route>
       <!-- </Route> -->
     {:else}
-      <div
-        id="page-container"
-        class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed main-content-narrow"
-      >
-        <!-- Side Overlay-->
-        <Aside />
-
-        <Sidebar />
-
+      <div class="page-wrapper compact-wrapper" id="pageWrapper">
         <Header />
-        <!-- Main Container -->
-        <main id="main-container">
-          <!-- Hero -->
-          <div class="content">
-            <Route path={mylinkurl + "/"}>
-              <Home />
-            </Route>
-            <Route path={mylinkurl + "my-account"}>
-              <Dashboard />
-            </Route>
-            <Route path={mylinkurl + "my-account/senaraiAhli"}>
-              <SenaraiAhli />
-            </Route>
-            <Route path={mylinkurl + "my-account/daftarAhli"}>
-              <DaftarAhli />
-            </Route>
-            <Route path={mylinkurl + "my-account/jenisYuran"}>
-              <JenisYuran />
-            </Route>
-            <Route path={mylinkurl + "my-account/tambahJenisYuran"}>
-              <TambahJenisYuran />
-            </Route>
-            <Route path={mylinkurl + "my-account/kemaskiniJenisYuran/:id"}>
-              <KemaskiniJenisYuran />
-            </Route>
-            <!-- <Route path={mylinkurl + "my-account/test"}>
-            <Test />
-          </Route> -->
-
-            <Route path={mylinkurl + "my-account/about"} component={About} />
-            <Route
-              path={mylinkurl + "my-account/maklumatKariah"}
-              component={MaklumatKariah}
-            />
-            <Route
-              path={mylinkurl + "my-account/maklumatProfil"}
-              component={MaklumatProfil}
-            />
-            <Route path={mylinkurl + "my-account/blog"}>
-              <Blog />
-            </Route>
-          </div>
-          <!-- END Hero -->
-        </main>
-        <!-- END Main Container -->
-
-        <Footer />
+        <div class="page-body-wrapper sidebar-icon">
+          <Sidebar />
+          <Route path={mylinkurl + "/"}>
+            <Home />
+          </Route>
+          <Route path={mylinkurl + "/dashboard"}>
+            <Dashboard />
+          </Route>
+          <Footer />
+        </div>
       </div>
       <!-- END Page Container -->
     {/if}

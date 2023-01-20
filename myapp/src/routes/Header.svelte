@@ -25,8 +25,8 @@
   onMount(async () => {
     unsubscribe = data.subscribe((value) => {});
     // setTimeout(async () => {
-    await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
-    console.log("oneui.app.min.js");
+    // await loadScript(`${mypluginurl}/assets/js/oneui.app.min.js`);
+    // console.log("oneui.app.min.js");
     // }, 1000);
   });
   onDestroy(() => {
@@ -54,203 +54,225 @@
   };
 </script>
 
-<!-- Header -->
-<header id="page-header">
-  <!-- Header Content -->
-  <div class="content-header">
-    <!-- Left Section -->
-    <div class="d-flex align-items-center">
-      <!-- Toggle Sidebar -->
-      <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-      <button
-        type="button"
-        class="btn btn-sm btn-alt-secondary me-2 d-lg-none"
-        data-toggle="layout"
-        data-action="sidebar_toggle"
-      >
-        <i class="fa fa-fw fa-bars" />
-      </button>
-      <!-- END Toggle Sidebar -->
-
-      <!-- Toggle Mini Sidebar -->
-      <!-- Layout API, functionality initialized in Template._uiApiLayout()-->
-      <button
-        type="button"
-        class="btn btn-sm btn-alt-secondary me-2 d-none d-lg-inline-block"
-        data-toggle="layout"
-        data-action="sidebar_mini_toggle"
-      >
-        <i class="fa fa-fw fa-ellipsis-v" />
-      </button>
-      <!-- END Toggle Mini Sidebar -->
-
-      <!-- Open Search Section (visible on smaller screens) -->
-      <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-      <button
-        type="button"
-        class="btn btn-sm btn-alt-secondary d-md-none"
-        data-toggle="layout"
-        data-action="header_search_on"
-      >
-        <i class="fa fa-fw fa-search" />
-      </button>
-      <!-- END Open Search Section -->
-
-      <!-- Search Form (visible on larger screens) -->
-      <!-- <form
-        class="d-none d-md-inline-block"
-        action="be_pages_generic_search.html"
-        method="POST"
-      >
-        <div class="input-group input-group-sm">
-          <input
-            type="text"
-            class="form-control form-control-alt"
-            placeholder="Search.."
-            id="page-header-search-input2"
-            name="page-header-search-input2"
-          />
-          <span class="input-group-text border-0">
-            <i class="fa fa-fw fa-search" />
-          </span>
-        </div>
-      </form> -->
-      <!-- END Search Form -->
-    </div>
-    <!-- END Left Section -->
-
-    <!-- Right Section -->
-    <div class="d-flex align-items-center">
-      <!-- User Dropdown -->
-      <div class="dropdown d-inline-block ms-2">
-        <button
-          type="button"
-          class="btn btn-sm btn-alt-secondary d-flex align-items-center"
-          id="page-header-user-dropdown"
-          data-bs-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+<!-- Page Header Start-->
+<div class="page-main-header">
+  <div class="main-header-right row m-0">
+    <div class="main-header-left">
+      <div class="logo-wrapper">
+        <a href="index.html"
+          ><img
+            class="img-fluid"
+            src="{mypluginurl}/assets/images/logo/logo.png"
+            alt=""
+          /></a
         >
-          <img
-            class="rounded-circle"
-            src={mypluginurl + "/assets/media/avatars/avatar10.jpg"}
-            alt="Header Avatar"
-            style="width: 21px;"
-          />
-          <span class="d-none d-sm-inline-block ms-2"
-            >{khai_user.data.display_name}</span
-          >
-          <i
-            class="fa fa-fw fa-angle-down d-none d-sm-inline-block opacity-50 ms-1 mt-1"
-          />
-        </button>
-        <div
-          class="dropdown-menu dropdown-menu-md dropdown-menu-end p-0 border-0"
-          aria-labelledby="page-header-user-dropdown"
-        >
-          <div class="p-3 text-center bg-body-light border-bottom rounded-top">
-            <img
-              class="img-avatar img-avatar48 img-avatar-thumb"
-              src="{mypluginurl}/assets/media/avatars/avatar10.jpg"
-              alt=""
-            />
-            <p class="mt-2 mb-0 fw-medium">{khai_user.data.display_name}</p>
-            <p class="mb-0 text-muted fs-sm fw-medium">--</p>
-          </div>
-          <!-- <div class="p-2">
-            <a
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              href="be_pages_generic_inbox.html"
-            >
-              <span class="fs-sm fw-medium">Inbox</span>
-              <span class="badge rounded-pill bg-primary ms-2">3</span>
-            </a>
-            <a
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              href="be_pages_generic_profile.html"
-            >
-              <span class="fs-sm fw-medium">Profile</span>
-              <span class="badge rounded-pill bg-primary ms-2">1</span>
-            </a>
-            <a
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              href="javascript:void(0)"
-            >
-              <span class="fs-sm fw-medium">Settings</span>
-            </a>
-          </div> -->
-          <div role="separator" class="dropdown-divider m-0" />
-          <div class="p-2">
-            <!-- <a
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              href="op_auth_lock.html"
-            >
-              <span class="fs-sm fw-medium">Lock Account</span>
-            </a> -->
-
-            <Link
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              to={mylinkurl + "my-account/maklumatProfil"}
-            >
-              <span class="fs-sm fw-medium">Profil</span>
-            </Link>
-            <a
-              href="/"
-              class="dropdown-item d-flex align-items-center justify-content-between"
-              on:click|preventDefault={(e) => logout(e)}
-            >
-              <span class="fs-sm fw-medium">Log Out</span>
-            </a>
-          </div>
-        </div>
       </div>
-      <!-- END User Dropdown -->
-
-      <!-- Toggle Side Overlay -->
-      <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-
-      <!-- END Toggle Side Overlay -->
-    </div>
-    <!-- END Right Section -->
-  </div>
-  <!-- END Header Content -->
-
-  <!-- Header Search -->
-  <div id="page-header-search" class="overlay-header bg-body-extra-light">
-    <div class="content-header">
-      <form class="w-100" action="be_pages_generic_search.html" method="POST">
-        <div class="input-group">
-          <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-          <button
-            type="button"
-            class="btn btn-alt-danger"
-            data-toggle="layout"
-            data-action="header_search_off"
-          >
-            <i class="fa fa-fw fa-times-circle" />
-          </button>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search or hit ESC.."
-            id="page-header-search-input"
-            name="page-header-search-input"
-          />
-        </div>
-      </form>
-    </div>
-  </div>
-  <!-- END Header Search -->
-
-  <!-- Header Loader -->
-  <!-- Please check out the Loaders page under Components category to see examples of showing/hiding it -->
-  <div id="page-header-loader" class="overlay-header bg-body-extra-light">
-    <div class="content-header">
-      <div class="w-100 text-center">
-        <i class="fa fa-fw fa-circle-notch fa-spin" />
+      <div class="dark-logo-wrapper">
+        <a href="index.html"
+          ><img
+            class="img-fluid"
+            src="{mypluginurl}/assets/images/logo/dark-logo.png"
+            alt=""
+          /></a
+        >
+      </div>
+      <div class="toggle-sidebar">
+        <i
+          class="status_toggle middle"
+          data-feather="align-center"
+          id="sidebar-toggle"
+        />
       </div>
     </div>
+    <div class="left-menu-header col">
+      <ul>
+        <li>
+          <form class="form-inline search-form">
+            <div class="search-bg">
+              <i class="fa fa-search" />
+              <input
+                class="form-control-plaintext"
+                placeholder="Search here....."
+              />
+            </div>
+          </form>
+          <span class="d-sm-none mobile-search search-bg"
+            ><i class="fa fa-search" /></span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="nav-right col pull-right right-menu p-0">
+      <ul class="nav-menus">
+        <li>
+          <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"
+            ><i data-feather="maximize" /></a
+          >
+        </li>
+        <li class="onhover-dropdown">
+          <div class="bookmark-box"><i data-feather="star" /></div>
+          <div class="bookmark-dropdown onhover-show-div">
+            <div class="form-group mb-0">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"
+                    ><i class="fa fa-search" /></span
+                  >
+                </div>
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Search for bookmark..."
+                />
+              </div>
+            </div>
+            <ul class="m-t-5">
+              <li class="add-to-bookmark">
+                <i class="bookmark-icon" data-feather="inbox" />Email<span
+                  class="pull-right"><i data-feather="star" /></span
+                >
+              </li>
+              <li class="add-to-bookmark">
+                <i
+                  class="bookmark-icon"
+                  data-feather="message-square"
+                />Chat<span class="pull-right"><i data-feather="star" /></span>
+              </li>
+              <li class="add-to-bookmark">
+                <i class="bookmark-icon" data-feather="command" />Feather Icon<span
+                  class="pull-right"><i data-feather="star" /></span
+                >
+              </li>
+              <li class="add-to-bookmark">
+                <i class="bookmark-icon" data-feather="airplay" />Widgets<span
+                  class="pull-right"><i data-feather="star" /></span
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="onhover-dropdown">
+          <div class="notification-box">
+            <i data-feather="bell" /><span class="dot-animated" />
+          </div>
+          <ul class="notification-dropdown onhover-show-div">
+            <li>
+              <p class="f-w-700 mb-0">
+                You have 3 Notifications<span
+                  class="pull-right badge badge-primary badge-pill">4</span
+                >
+              </p>
+            </li>
+            <li class="noti-primary">
+              <div class="media">
+                <span class="notification-bg bg-light-primary"
+                  ><i data-feather="activity" /></span
+                >
+                <div class="media-body">
+                  <p>Delivery processing</p>
+                  <span>10 minutes ago</span>
+                </div>
+              </div>
+            </li>
+            <li class="noti-secondary">
+              <div class="media">
+                <span class="notification-bg bg-light-secondary"
+                  ><i data-feather="check-circle" /></span
+                >
+                <div class="media-body">
+                  <p>Order Complete</p>
+                  <span>1 hour ago</span>
+                </div>
+              </div>
+            </li>
+            <li class="noti-success">
+              <div class="media">
+                <span class="notification-bg bg-light-success"
+                  ><i data-feather="file-text" /></span
+                >
+                <div class="media-body">
+                  <p>Tickets Generated</p>
+                  <span>3 hour ago</span>
+                </div>
+              </div>
+            </li>
+            <li class="noti-danger">
+              <div class="media">
+                <span class="notification-bg bg-light-danger"
+                  ><i data-feather="user-check" /></span
+                >
+                <div class="media-body">
+                  <p>Delivery Complete</p>
+                  <span>6 hour ago</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <div class="mode"><i class="fa fa-moon-o" /></div>
+        </li>
+        <li class="onhover-dropdown">
+          <i data-feather="message-square" />
+          <ul class="chat-dropdown onhover-show-div">
+            <li>
+              <div class="media">
+                <img
+                  class="img-fluid rounded-circle me-3"
+                  src="{mypluginurl}/assets/images/user/4.jpg"
+                  alt=""
+                />
+                <div class="media-body">
+                  <span>Ain Chavez</span>
+                  <p class="f-12 light-font">Lorem Ipsum is simply dummy...</p>
+                </div>
+                <p class="f-12">32 mins ago</p>
+              </div>
+            </li>
+            <li>
+              <div class="media">
+                <img
+                  class="img-fluid rounded-circle me-3"
+                  src="{mypluginurl}/assets/images/user/1.jpg"
+                  alt=""
+                />
+                <div class="media-body">
+                  <span>Erica Hughes</span>
+                  <p class="f-12 light-font">Lorem Ipsum is simply dummy...</p>
+                </div>
+                <p class="f-12">58 mins ago</p>
+              </div>
+            </li>
+            <li>
+              <div class="media">
+                <img
+                  class="img-fluid rounded-circle me-3"
+                  src="{mypluginurl}/assets/images/user/2.jpg"
+                  alt=""
+                />
+                <div class="media-body">
+                  <span>Kori Thomas</span>
+                  <p class="f-12 light-font">Lorem Ipsum is simply dummy...</p>
+                </div>
+                <p class="f-12">1 hr ago</p>
+              </div>
+            </li>
+            <li class="text-center">
+              <a class="f-w-700" href="javascript:void(0)">See All </a>
+            </li>
+          </ul>
+        </li>
+        <li class="onhover-dropdown p-0">
+          <button class="btn btn-primary-light" type="button"
+            ><a href="login_two.html"><i data-feather="log-out" />Log out</a
+            ></button
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="d-lg-none mobile-toggle pull-right w-auto">
+      <i data-feather="more-horizontal" />
+    </div>
   </div>
-  <!-- END Header Loader -->
-</header>
-<!-- END Header -->
+</div>
+<!-- Page Header Ends    -->
