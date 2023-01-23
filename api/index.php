@@ -17,8 +17,17 @@ function mypwp_check_user(){
     if($_POST['action'] && $_POST['action'] === 'ViewCagamasData'){
         require_once MYPLUGINWP_PATH . 'api/ViewCagamasData.php' ;
     }
+    if($_POST['action'] && $_POST['action'] === 'ViewCagamasDataProses'){
+        require_once MYPLUGINWP_PATH . 'api/ViewCagamasDataProses.php' ;
+    }
     if($_POST['action'] && $_POST['action'] === 'ViewLPPSAData'){
         require_once MYPLUGINWP_PATH . 'api/ViewLPPSAData.php' ;
+    }
+    if($_POST['action'] && $_POST['action'] === 'ViewLPPSADataProses'){
+        require_once MYPLUGINWP_PATH . 'api/ViewLPPSADataProses.php' ;
+    }
+    if($_POST['action'] && $_POST['action'] === 'ReconciledAccount'){
+        require_once MYPLUGINWP_PATH . 'api/ReconciledAccount.php' ;
     }
 
 
